@@ -1,8 +1,8 @@
-package com.users.test.service;
+package com.users.testusers.service;
 
-import com.users.test.model.User;
-import com.users.test.model.UserDTO;
-import com.users.test.repository.UserRepository;
+import com.users.testusers.model.User;
+import com.users.testusers.model.UserDTO;
+import com.users.testusers.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -74,8 +74,8 @@ public class UserServiceImpl implements UserService{
             usuario.setName(newUser.getName());
             usuario.setEmail(newUser.getEmail());
             usuario.setNumber(newUser.getNumber());
-            usuario.setCitycode(newUser.getCitycode());
-            usuario.setCountrycode(newUser.getCountrycode());
+            usuario.setCitycode(usuario.getCitycode());
+            usuario.setCountrycode(usuario.getCountrycode());
 
             userRepository.save(usuario);
 

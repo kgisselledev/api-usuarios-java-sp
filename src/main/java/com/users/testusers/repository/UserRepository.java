@@ -1,9 +1,7 @@
-package com.users.test.repository;
+package com.users.testusers.repository;
 
-import com.users.test.model.User;
-import com.users.test.model.UserDTO;
+import com.users.testusers.model.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +12,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     boolean existsByEmail(String email);
+
 
 }

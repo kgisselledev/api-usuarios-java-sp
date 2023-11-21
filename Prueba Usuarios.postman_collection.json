@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "b1f06c48-9c3e-47ca-8217-62b544466854",
+		"name": "Prueba Usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15265226"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"username\": \"Karol\",\r\n\"password\": \"12345\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"username\": \"Karol\",\r\n\"password\": \"12345\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiS2Fyb2wiLCJleHAiOjE3MDA1NDY3NjAsImlhdCI6MTcwMDU0MzE2MCwic2NvcGUiOiIifQ.MtY8T4NGP8Ow06QcSoquqkZxU9A7SdK-NPR8NbV8qJLrN9vENYMHgz4T3cu0csopSAY9kAnmftRCATV3g110rfRH3LrDN68UCZWm5M_jcLbqmGwJ_PFRvECjnuqgv8FvwSLv_PhaVM8RIPbX9Dco32AtiNFaYt8xrm2uLO9kcGKMxo9fYCDGOQVDmynQLLYKzD8OtAHUPh4V8hrKxX7jcae23zt7TlStt8YMQgqQSTW7SH4XB8LkYD4etAMHNA1tcRD_CiI_waQ9eY7BO3Cue7PWU39XQnPEV3uTvl6G0Ib-X4MZKLTQa0u1IaHs1TD3qWLJzYzHQsL9cRY7r3xfYg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Marge\",\r\n\"password\": \"111\",\r\n\"name\": \"Mara\",\r\n\"email\": \"Mara@org\",\r\n\"number\": \"1245\",\r\n\"citycode\": \"8\",\r\n\"countrycode\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiS2Fyb2wiLCJleHAiOjE3MDA1NDY3NjAsImlhdCI6MTcwMDU0MzE2MCwic2NvcGUiOiIifQ.MtY8T4NGP8Ow06QcSoquqkZxU9A7SdK-NPR8NbV8qJLrN9vENYMHgz4T3cu0csopSAY9kAnmftRCATV3g110rfRH3LrDN68UCZWm5M_jcLbqmGwJ_PFRvECjnuqgv8FvwSLv_PhaVM8RIPbX9Dco32AtiNFaYt8xrm2uLO9kcGKMxo9fYCDGOQVDmynQLLYKzD8OtAHUPh4V8hrKxX7jcae23zt7TlStt8YMQgqQSTW7SH4XB8LkYD4etAMHNA1tcRD_CiI_waQ9eY7BO3Cue7PWU39XQnPEV3uTvl6G0Ib-X4MZKLTQa0u1IaHs1TD3qWLJzYzHQsL9cRY7r3xfYg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"password\": \"49X?Ñz78\",\r\n\"name\": \"Juan Rodriguez\",\r\n\"email\": \"juan@rodriguez.org\",\r\n\"number\": \"1234567\",\r\n\"citycode\": \"1\",\r\n\"countrycode\": \"5\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/GET",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiS2Fyb2wiLCJleHAiOjE3MDA1NDY3NjAsImlhdCI6MTcwMDU0MzE2MCwic2NvcGUiOiIifQ.MtY8T4NGP8Ow06QcSoquqkZxU9A7SdK-NPR8NbV8qJLrN9vENYMHgz4T3cu0csopSAY9kAnmftRCATV3g110rfRH3LrDN68UCZWm5M_jcLbqmGwJ_PFRvECjnuqgv8FvwSLv_PhaVM8RIPbX9Dco32AtiNFaYt8xrm2uLO9kcGKMxo9fYCDGOQVDmynQLLYKzD8OtAHUPh4V8hrKxX7jcae23zt7TlStt8YMQgqQSTW7SH4XB8LkYD4etAMHNA1tcRD_CiI_waQ9eY7BO3Cue7PWU39XQnPEV3uTvl6G0Ib-X4MZKLTQa0u1IaHs1TD3qWLJzYzHQsL9cRY7r3xfYg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Musica\",\r\n\"password\": \"G$31w%Bq\",\r\n\"name\": \"foxxes\",\r\n\"email\": \"lala@cl.com\",\r\n\"number\": \"9623\",\r\n\"citycode\": \"1\",\r\n\"countrycode\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/PUT",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiS2Fyb2wiLCJleHAiOjE3MDA1NDY3NjAsImlhdCI6MTcwMDU0MzE2MCwic2NvcGUiOiIifQ.MtY8T4NGP8Ow06QcSoquqkZxU9A7SdK-NPR8NbV8qJLrN9vENYMHgz4T3cu0csopSAY9kAnmftRCATV3g110rfRH3LrDN68UCZWm5M_jcLbqmGwJ_PFRvECjnuqgv8FvwSLv_PhaVM8RIPbX9Dco32AtiNFaYt8xrm2uLO9kcGKMxo9fYCDGOQVDmynQLLYKzD8OtAHUPh4V8hrKxX7jcae23zt7TlStt8YMQgqQSTW7SH4XB8LkYD4etAMHNA1tcRD_CiI_waQ9eY7BO3Cue7PWU39XQnPEV3uTvl6G0Ib-X4MZKLTQa0u1IaHs1TD3qWLJzYzHQsL9cRY7r3xfYg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Musica\",\r\n\"password\": \"G$31w%Bq\",\r\n\"name\": \"foxxes\",\r\n\"email\": \"lala@cl.com\",\r\n\"number\": \"9623\",\r\n\"citycode\": \"1\",\r\n\"countrycode\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/usersDEL",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiS2Fyb2wiLCJleHAiOjE3MDA1NDY3NjAsImlhdCI6MTcwMDU0MzE2MCwic2NvcGUiOiIifQ.MtY8T4NGP8Ow06QcSoquqkZxU9A7SdK-NPR8NbV8qJLrN9vENYMHgz4T3cu0csopSAY9kAnmftRCATV3g110rfRH3LrDN68UCZWm5M_jcLbqmGwJ_PFRvECjnuqgv8FvwSLv_PhaVM8RIPbX9Dco32AtiNFaYt8xrm2uLO9kcGKMxo9fYCDGOQVDmynQLLYKzD8OtAHUPh4V8hrKxX7jcae23zt7TlStt8YMQgqQSTW7SH4XB8LkYD4etAMHNA1tcRD_CiI_waQ9eY7BO3Cue7PWU39XQnPEV3uTvl6G0Ib-X4MZKLTQa0u1IaHs1TD3qWLJzYzHQsL9cRY7r3xfYg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Musica\",\r\n\"password\": \"G$31w%Bq\",\r\n\"name\": \"foxxes\",\r\n\"email\": \"lala@cl.com\",\r\n\"number\": \"9623\",\r\n\"citycode\": \"1\",\r\n\"countrycode\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
