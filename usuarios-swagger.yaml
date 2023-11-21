@@ -1,0 +1,363 @@
+openapi: 3.0.1
+info:
+  title: API de Creacion de Usuarios.
+  description: Crea el usuario y registra el token para realizar la creacion de usuarios.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/
+tags:
+  - name: usuarios
+    description: Maneja los datos de clientes
+
+paths:
+  /register:
+    post:
+      tags:
+        - usuarios
+      summary: Registra el usuario y contraseña para generar el token.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/register'
+        required: true
+      responses:
+        '200':
+          description: Usuario creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successregister'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /token:
+    post:
+      tags:
+        - usuarios
+      summary: Genera el token para el usuario.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/token'
+      responses:
+        '200':
+          description: Token creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successtoken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /user:
+    post:
+      tags:
+        - usuarios
+      summary: Creacion de usuarios.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        '200':
+          description: Usuario creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successregister'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /users:
+    get:
+      tags:
+        - usuarios
+      summary: Creacion de usuarios.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/usersget'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  '/users/{id}':
+    get:
+      tags:
+        - usuarios
+      summary: Creacion de usuarios.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - name: id
+          in: path
+          description: Id del cliente
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userget'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  '/usersmod/{id}':
+    put:
+      tags:
+        - usuarios
+      summary: Creacion de usuarios.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - name: id
+          in: path
+          description: Id del cliente
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuario modificado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userput'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  '/usersdelete/{id}':
+    delete:
+      tags:
+        - usuarios
+      summary: Creacion de usuarios.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - name: id
+          in: path
+          description: Id del cliente
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: El usuario con el id ha sido eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successdelete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  responses:
+    BadRequest:
+      description: El formato de correo es invalido, contraseña invalida.
+    NotFound:
+      description: No se encuentra el usuario
+    ServerError:
+      description: Error de Servidor
+    Unauthorized:
+      description: No tiene autorizacion
+
+  parameters:
+    token:
+      in: header
+      name: token
+      description: Token de autenticacion.
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    userput:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Usuario
+        password:
+          type: string
+          description: Contraseña de usuario
+        name:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: email de usuario
+        number:
+          type: string
+          description: Numero de usuario
+        citycode:
+          type: string
+          description: Codigo de ciudad de usuario
+        countrycode:
+          type: string
+          description: Codigo de pais de usuario
+
+    userget:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Usuario
+        password:
+          type: string
+          description: Contraseña de usuario
+        name:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: email de usuario
+        number:
+          type: string
+          description: Numero de usuario
+        citycode:
+          type: string
+          description: Codigo de ciudad de usuario
+        countrycode:
+          type: string
+          description: Codigo de pais de usuario
+
+    usersget:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Usuario
+        password:
+          type: string
+          description: Contraseña de usuario
+        name:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: email de usuario
+        number:
+          type: string
+          description: Numero de usuario
+        citycode:
+          type: string
+          description: Codigo de ciudad de usuario
+        countrycode:
+          type: string
+          description: Codigo de pais de usuario
+
+    user:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Usuario
+        password:
+          type: string
+          description: Contraseña de usuario
+        name:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: email de usuario
+        number:
+          type: string
+          description: Numero de usuario
+        citycode:
+          type: string
+          description: Codigo de ciudad de usuario
+        countrycode:
+          type: string
+          description: Codigo de pais de usuario
+
+    successdelete:
+      type: object
+      properties:
+        Mensaje:
+          type: string
+          description: Usuario eliminado
+
+    successregister:
+      type: object
+      properties:
+        Mensaje:
+          type: string
+          description: Usuario creado
+
+    successtoken:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Token generado
+        username:
+          type: string
+          description: Usuario
+
+
+    register:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Nombre de usuario
+        password:
+          type: string
+          description: Contraseña de usuario
+
+    token:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Nombre de usuario
+        password:
+          type: string
+          description: Contraseña de usuario
